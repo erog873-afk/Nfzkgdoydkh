@@ -1,0 +1,683 @@
+2026-07-17 12:47:53 | INFO     | bot                  | Запуск бота...
+2026-07-17 12:47:53 | INFO     | bot                  | База данных инициализирована
+2026-07-17 12:48:14 | ERROR    | bot                  | [ERROR] TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора] | Контекст: Критическая ошибка в polling
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1301, in _wrap_create_connection
+    sock = await aiohappyeyeballs.start_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohappyeyeballs\impl.py", line 124, in start_connection
+    raise first_exception
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohappyeyeballs\impl.py", line 75, in start_connection
+    sock = await _connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohappyeyeballs\impl.py", line 210, in _connect_sock
+    await loop.sock_connect(sock, address)
+  File "C:\Python314\Lib\asyncio\proactor_events.py", line 728, in sock_connect
+    return await self._proactor.connect(sock, address)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 804, in _poll
+    value = callback(transferred, key, ov)
+  File "C:\Python314\Lib\asyncio\windows_events.py", line 600, in finish_connect
+    ov.getresult()
+    ~~~~~~~~~~~~^^
+OSError: [WinError 121] Превышен таймаут семафора
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 167, in make_request
+    async with session.post(
+               ~~~~~~~~~~~~^
+        url,
+        ^^^^
+        data=form,
+        ^^^^^^^^^^
+        timeout=self.timeout if timeout is None else timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as resp:
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 1683, in __aenter__
+    self._resp: _RetType_co = await self._coro
+                              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 856, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 810, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 273, in main
+    await dp.start_polling(bot)
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\dispatcher\dispatcher.py", line 595, in start_polling
+    await self.emit_startup(bot=bots[-1], **workflow_data)
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\dispatcher\router.py", line 283, in emit_startup
+    await self.startup.trigger(*args, **kwargs)
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\dispatcher\event\event.py", line 43, in trigger
+    await handler.call(*args, **kwargs)
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\dispatcher\event\handler.py", line 71, in call
+    return await wrapped()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 45, in on_startup
+    await bot.set_my_commands(commands, scope=BotCommandScopeDefault())
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 3759, in set_my_commands
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 509, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 176, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}") from e
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [Превышен таймаут семафора]
+2026-07-17 12:49:34 | INFO     | bot                  | Запуск бота...
+2026-07-17 12:49:34 | INFO     | bot                  | База данных инициализирована
+2026-07-17 12:49:38 | INFO     | bot                  | Команды бота установлены
+2026-07-17 12:49:38 | INFO     | bot                  | Бот может присоединяться к группам (Business潜力)
+2026-07-17 12:49:38 | INFO     | bot                  | Бизнес статус проверен: @Ydallenkarobot
+2026-07-17 12:49:38 | INFO     | bot                  | [ACTION] STARTUP | Бот запущен. Владелец: 8934899126
+2026-07-17 12:57:09 | INFO     | bot                  | Начинаем polling...
+2026-07-17 12:57:09 | ERROR    | bot                  | [ERROR] AttributeError: 'BusinessMessagesDeleted' object has no attribute 'deleted_business_messages' | Контекст: Ошибка обработки deleted_business_messages
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 260, in handle_deleted_business_messages
+    messages = event.deleted_business_messages
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\site-packages\pydantic\main.py", line 1042, in __getattr__
+    raise AttributeError(f'{type(self).__name__!r} object has no attribute {item!r}')
+AttributeError: 'BusinessMessagesDeleted' object has no attribute 'deleted_business_messages'
+2026-07-17 12:58:30 | INFO     | bot                  | Начинаем polling...
+2026-07-17 12:59:56 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:04:37 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): Ало
+2026-07-17 13:06:57 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): Что
+2026-07-17 13:07:20 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:10:37 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:12:03 | INFO     | bot                  | [ACTION] BUSINESS_DELETE | Удалено 1 сообщений в чате 6888854128, business=zvKHa5fo0EqPEwAAEpp6W38lMi8, IDs=[17632]
+2026-07-17 13:12:30 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): Да
+2026-07-17 13:12:33 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): Но плохо
+2026-07-17 13:12:51 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:12:55 | INFO     | bot                  | [ACTION] BUSINESS_MSG | Получено business-сообщение от 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:19:37 | INFO     | bot                  | Запуск бота...
+2026-07-17 13:19:37 | ERROR    | bot                  | [ERROR] TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None] | Контекст: Ошибка при запуске
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1316, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1198, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1231, in _create_connection_transport
+    await waiter
+  File "C:\Python314\Lib\asyncio\sslproto.py", line 581, in _on_handshake_complete
+    raise handshake_exc
+ConnectionResetError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 167, in make_request
+    async with session.post(
+               ~~~~~~~~~~~~^
+        url,
+        ^^^^
+        data=form,
+        ^^^^^^^^^^
+        timeout=self.timeout if timeout is None else timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as resp:
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 1683, in __aenter__
+    self._resp: _RetType_co = await self._coro
+                              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 856, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 810, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 628, in main
+    me = await bot.get_me()
+         ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 1825, in get_me
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 509, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 176, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}") from e
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-07-17 13:19:37 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:22:54 | INFO     | bot                  | [ACTION] START | Пользователь 8934899126 открыл меню
+2026-07-17 13:23:15 | INFO     | bot                  | [ACTION] AR | Автоответчик включён
+2026-07-17 13:23:24 | INFO     | bot                  | [ACTION] DELETE | Удалено 1 сообщений, biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:23:29 | INFO     | bot                  | [ACTION] START | Пользователь 8934899126 открыл меню
+2026-07-17 13:24:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:24:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:24:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:24:12 | INFO     | bot                  | [ACTION] START | Пользователь 8934899126 открыл меню
+2026-07-17 13:24:16 | INFO     | bot                  | [ACTION] START | Пользователь 8934899126 открыл меню
+2026-07-17 13:24:59 | INFO     | bot                  | [ACTION] DELETE | Удалено 1 сообщений, biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:25:10 | INFO     | bot                  | [ACTION] DELETE | Удалено 1 сообщений, biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:25:37 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): 🗑 Удалённое сообщение
+
+📌 Message ID: 17665
+💬 Чат: 8854614217
+2026-07-17 13:25:44 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): А какое сообщение удалено не видно
+2026-07-17 13:26:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Половина кнопок не работает
+2026-07-17 13:32:07 | INFO     | bot                  | Запуск бота...
+2026-07-17 13:32:08 | INFO     | bot                  | Бот: @Ydallenkarobot (ID: 8027751306)
+2026-07-17 13:32:08 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:33:02 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну что
+2026-07-17 13:33:07 | INFO     | bot                  | [ACTION] START | Открытo меню пользователем 8934899126
+2026-07-17 13:33:12 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:12 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да да
+2026-07-17 13:33:16 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Только сдлал
+2026-07-17 13:33:20 | INFO     | bot                  | [ACTION] AR | Текст изменён: Здравствуйте, {first_name}.
+Сейчас я не могу ответ
+2026-07-17 13:33:21 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:21 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Оо вот
+2026-07-17 13:33:24 | ERROR    | bot                  | [ERROR] TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None] | Контекст: Ошибка автоответчика
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1316, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1198, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1231, in _create_connection_transport
+    await waiter
+  File "C:\Python314\Lib\asyncio\sslproto.py", line 581, in _on_handshake_complete
+    raise handshake_exc
+ConnectionResetError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 167, in make_request
+    async with session.post(
+               ~~~~~~~~~~~~^
+        url,
+        ^^^^
+        data=form,
+        ^^^^^^^^^^
+        timeout=self.timeout if timeout is None else timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as resp:
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 1683, in __aenter__
+    self._resp: _RetType_co = await self._coro
+                              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 856, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 810, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 736, in _handle_auto_reply
+    await bot.send_message(
+    ...<3 lines>...
+    )
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 2950, in send_message
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 509, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 176, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}") from e
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-07-17 13:33:24 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Чо то есть
+2026-07-17 13:33:26 | INFO     | bot                  | [ACTION] AR | Задержка: Случайная 1-6 сек
+2026-07-17 13:33:33 | INFO     | bot                  | [ACTION] SETTINGS | Уведомления выключены
+2026-07-17 13:33:33 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:33 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Аа настро интервал
+2026-07-17 13:33:44 | INFO     | bot                  | [ACTION] DELETE | IDs: [17690], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:33:45 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:45 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да
+2026-07-17 13:33:56 | INFO     | bot                  | [ACTION] EDIT | От 6888854128: Из енннные -> Из енннные алла
+2026-07-17 13:33:57 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:33:57 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Из енннные
+2026-07-17 13:34:12 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Напиши что-нибудь
+2026-07-17 13:34:15 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:34:15 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну чо там?
+2026-07-17 13:34:15 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): .
+2026-07-17 13:34:34 | INFO     | bot                  | [ACTION] AR | Задержка: 60 сек
+2026-07-17 13:34:37 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:34:37 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну а удалённые и изменённые?
+2026-07-17 13:34:46 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Почему задержка 60 секунд
+2026-07-17 13:34:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Это много
+2026-07-17 13:34:55 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Мало
+2026-07-17 13:35:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Типа каждые 60 секунд он сообщение будет отправлят
+2026-07-17 13:35:27 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Максимум 60 секунд
+2026-07-17 13:35:52 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Удали сообщение
+2026-07-17 13:35:55 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:35:55 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): В смысле
+2026-07-17 13:35:56 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Или измени
+2026-07-17 13:35:57 | INFO     | bot                  | [ACTION] DELETE | IDs: [17708], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:36:04 | INFO     | bot                  | [ACTION] EDIT | От 6888854128: Окей исправлю -> Окей исправлю вот ищменил
+2026-07-17 13:36:19 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:36:19 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну а там другие время нету?
+2026-07-17 13:36:25 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:36:32 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:36:32 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Окей исправлю
+2026-07-17 13:36:36 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:36:39 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:36:43 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:36:43 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): И давай а ужаленные показывать?
+2026-07-17 13:36:44 | INFO     | bot                  | [ACTION] DELETE | IDs: [17716], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:37:06 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Мне надо чтобы уведомлениями приходили не вот так 
+2026-07-17 13:37:10 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:37:10 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А теперь?
+2026-07-17 13:37:12 | INFO     | bot                  | [ACTION] START | Открытo меню пользователем 8934899126
+2026-07-17 13:37:36 | INFO     | bot                  | [ACTION] SETTINGS | Все логи очищены
+2026-07-17 13:37:38 | INFO     | bot                  | [ACTION] SETTINGS | Все логи очищены
+2026-07-17 13:37:40 | INFO     | bot                  | [ACTION] SETTINGS | Уведомления включены
+2026-07-17 13:37:45 | INFO     | bot                  | [ACTION] START | Открытo меню пользователем 8934899126
+2026-07-17 13:39:31 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:39:31 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да да так и будет
+2026-07-17 13:39:34 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 8854614217 (@Lllllhtuu)
+2026-07-17 13:39:34 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8854614217 (@Lllllhtuu): Qq
+2026-07-17 13:39:47 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:39:47 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): [медиа]
+2026-07-17 13:40:22 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Da
+2026-07-17 13:40:41 | INFO     | bot                  | [ACTION] DELETE | IDs: [17733], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:41:04 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:41:12 | INFO     | bot                  | Запуск бота...
+2026-07-17 13:41:12 | INFO     | bot                  | Бот: @Ydallenkarobot (ID: 8027751306)
+2026-07-17 13:41:13 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:41:13 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Только фото не показывает
+2026-07-17 13:41:16 | INFO     | bot                  | [ACTION] START | Открыто меню
+2026-07-17 13:41:47 | INFO     | bot                  | [ACTION] DELETE | IDs: [17742], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:41:50 | INFO     | bot                  | [ACTION] DELETE | IDs: [17741], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:42:14 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:42:17 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Показывает
+2026-07-17 13:42:23 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Текст теперь
+2026-07-17 13:42:33 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128
+2026-07-17 13:42:33 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Это исправимо
+2026-07-17 13:42:35 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 8854614217
+2026-07-17 13:42:35 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8854614217 (@Lllllhtuu): Привет
+2026-07-17 13:42:43 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 8854614217
+2026-07-17 13:42:43 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8854614217 (@Lllllhtuu): [медиа]
+2026-07-17 13:42:50 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Можно пожалуйста исправить когда удали но сообщени
+2026-07-17 13:43:03 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Типа будут писать если сообщение удалено удалено с
+2026-07-17 13:43:13 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Если фото удалено фото Егор юзернейм и и фото
+2026-07-17 13:43:26 | INFO     | bot                  | [ACTION] START | Открыто меню
+2026-07-17 13:43:47 | INFO     | bot                  | [ACTION] AR | Задержка: Случайная 30-35 мин
+2026-07-17 13:44:14 | INFO     | bot                  | Запуск бота...
+2026-07-17 13:44:14 | INFO     | bot                  | Бот: @Ydallenkarobot (ID: 8027751306)
+2026-07-17 13:44:14 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:45:20 | INFO     | bot                  | [ACTION] START | Открыто меню
+2026-07-17 13:45:39 | INFO     | bot                  | [ACTION] DELETE | IDs: [17759], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:45:39 | INFO     | bot                  | [ACTION] NOTIFY | Отправлено владельцу: 🗑 <b>Удалённое сообщение</b>
+
+👤 Егорел (@Lllllhtuu)
+🆔 <code>8854614217</code>
+💬 
+2026-07-17 13:46:15 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Не ну так возможно сейчас делать чтобы только юзер
+2026-07-17 13:46:20 | INFO     | bot                  | Запуск бота...
+2026-07-17 13:46:20 | ERROR    | bot                  | [ERROR] TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None] | Контекст: Ошибка при запуске
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1316, in _wrap_create_connection
+    return await self._loop.create_connection(*args, **kwargs, sock=sock)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1198, in create_connection
+    transport, protocol = await self._create_connection_transport(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        ssl_shutdown_timeout=ssl_shutdown_timeout)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python314\Lib\asyncio\base_events.py", line 1231, in _create_connection_transport
+    await waiter
+  File "C:\Python314\Lib\asyncio\sslproto.py", line 581, in _on_handshake_complete
+    raise handshake_exc
+ConnectionResetError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 167, in make_request
+    async with session.post(
+               ~~~~~~~~~~~~^
+        url,
+        ^^^^
+        data=form,
+        ^^^^^^^^^^
+        timeout=self.timeout if timeout is None else timeout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as resp:
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 1683, in __aenter__
+    self._resp: _RetType_co = await self._coro
+                              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 856, in _request
+    resp = await handler(req)
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\client.py", line 810, in _connect_and_send_request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        req, traces=traces, timeout=real_timeout
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 657, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1242, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1620, in _create_direct_connection
+    raise last_exc
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1589, in _create_direct_connection
+    transp, proto = await self._wrap_create_connection(
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+    )
+    ^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiohttp\connector.py", line 1324, in _wrap_create_connection
+    raise client_error(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Forbrothers\telegram_monitor_bot\bot.py", line 885, in main
+    me = await _bot.get_me()
+         ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 1825, in get_me
+    return await self(call, request_timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\bot.py", line 509, in __call__
+    return await self.session(self, method, timeout=request_timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\base.py", line 259, in __call__
+    return cast(TelegramType, await middleware(bot, method))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Forbrothers\AppData\Roaming\Python\Python314\site-packages\aiogram\client\session\aiohttp.py", line 176, in make_request
+    raise TelegramNetworkError(method=method, message=f"{type(e).__name__}: {e}") from e
+aiogram.exceptions.TelegramNetworkError: HTTP Client says - ClientConnectorError: Cannot connect to host api.telegram.org:443 ssl:default [None]
+2026-07-17 13:46:20 | INFO     | bot                  | Начинаем polling...
+2026-07-17 13:46:26 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Удалено фото Егор ethername фото будет
+2026-07-17 13:48:06 | INFO     | bot                  | [ACTION] AR | Задержка: Мгновенно
+2026-07-17 13:48:13 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 8981220391 (@?)
+2026-07-17 13:48:13 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8981220391 (@?): Привет
+2026-07-17 13:48:21 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 8981220391 (@?)
+2026-07-17 13:48:21 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8981220391 (@?): Привет
+2026-07-17 13:48:21 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:21 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну ка давай проверим
+2026-07-17 13:48:24 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:24 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да
+2026-07-17 13:48:27 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:27 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ба
+2026-07-17 13:48:29 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:29 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Аььа
+2026-07-17 13:48:30 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:30 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Кшшк
+2026-07-17 13:48:37 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:37 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): [медиа]
+2026-07-17 13:48:42 | INFO     | bot                  | [ACTION] DELETE | IDs: [17782], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:48:42 | INFO     | bot                  | [ACTION] DELETE | Отправлено с вложением (photo)
+2026-07-17 13:48:44 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Это пофиксить можно
+2026-07-17 13:48:48 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:48 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Все работает?
+2026-07-17 13:48:58 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:48:58 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Аа ты просто интервал настроил?
+2026-07-17 13:48:59 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Да
+2026-07-17 13:49:07 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну типа смотри если человек первый раз пишет тогда
+2026-07-17 13:49:16 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:49:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну другим тоже нужно
+2026-07-17 13:49:17 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Если я тоже там поставлю 35 минут или 60 минут что
+2026-07-17 13:49:31 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:49:31 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да все норм я делаю не волнуйся
+2026-07-17 13:49:35 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:49:35 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А фото пришло?
+2026-07-17 13:49:38 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Да
+2026-07-17 13:49:45 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:49:45 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:49:46 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): И покажи на сколько интервал поставил?
+2026-07-17 13:49:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): 0
+2026-07-17 13:49:56 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:49:56 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): [медиа]
+2026-07-17 13:50:00 | INFO     | bot                  | [ACTION] DELETE | IDs: [17804], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:50:00 | INFO     | bot                  | [ACTION] DELETE | Отправлено с вложением (voice)
+2026-07-17 13:50:11 | INFO     | bot                  | [ACTION] AUTOREPLY | Пользователю 6888854128 (@minenotru)
+2026-07-17 13:50:11 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Аа ну побольше сделай что бы проверили
+2026-07-17 13:50:24 | INFO     | bot                  | [ACTION] START | Открыто меню
+2026-07-17 13:50:33 | INFO     | bot                  | [ACTION] AR | Задержка: 30 сек
+2026-07-17 13:50:41 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Что значит фикс
+2026-07-17 13:50:49 | INFO     | bot                  | [ACTION] AR | Задержка: Случайная 30-35 мин
+2026-07-17 13:50:57 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1753 сек
+2026-07-17 13:50:57 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Покажи
+2026-07-17 13:51:09 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:51:11 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 13:51:40 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1711 сек
+2026-07-17 13:51:40 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Аа думаю фикс это интервал
+2026-07-17 13:51:50 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1703 сек
+2026-07-17 13:51:50 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А обычные цифры это задержка
+2026-07-17 13:52:19 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Сделай пожалуйста если человек первый раз мне пише
+2026-07-17 13:53:02 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1629 сек
+2026-07-17 13:53:02 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну это так и работает
+2026-07-17 13:53:21 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Есть у тебя аккаунт с который ты не общался со мно
+2026-07-17 13:53:24 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Напиши пожалуйста
+2026-07-17 13:53:36 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1594 сек
+2026-07-17 13:53:36 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ааа
+2026-07-17 13:53:45 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1586 сек
+2026-07-17 13:53:45 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Фикс это точное время
+2026-07-17 13:53:51 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1581 сек
+2026-07-17 13:53:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А обычные это примерно
+2026-07-17 13:53:53 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 8981220391, осталось 1470 сек
+2026-07-17 13:53:53 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8981220391 (@?): [медиа]
+2026-07-17 13:54:16 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 8981220391, осталось 1448 сек
+2026-07-17 13:54:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8981220391 (@?): [медиа]
+2026-07-17 13:54:17 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1557 сек
+2026-07-17 13:54:17 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Хмм даже если есть у меня там сб
+2026-07-17 13:54:31 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 8981220391, осталось 1431 сек
+2026-07-17 13:54:31 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8981220391 (@?): [медиа]
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] DELETE | IDs: [17824, 17825, 17827], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] NOTIFY | Отправлено владельцу: 🗑 <b>Удалённое сообщение</b>
+
+👤 Егор (нет)
+🆔 <code>8981220391</code>
+💬 стикер
+🕐 
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] DELETE | Отправлено с вложением (sticker)
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] DELETE | Отправлено с вложением (voice)
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] NOTIFY | Отправлено владельцу: 🗑 <b>Удалённое сообщение</b>
+
+👤 Егор (нет)
+🆔 <code>8981220391</code>
+💬 кружок
+🕐 
+2026-07-17 13:54:36 | INFO     | bot                  | [ACTION] DELETE | Отправлено с вложением (video_note)
+2026-07-17 13:55:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Что ты пофиксишь меня пожалуйста чтобы вот если го
+2026-07-17 13:56:09 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Сделаем сначала голосовой появляется удалённое гол
+2026-07-17 13:56:11 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1444 сек
+2026-07-17 13:56:11 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А чо как тебе он мешает
+2026-07-17 13:56:12 | INFO     | bot                  | [ACTION] DELETE | IDs: [17833], biz=zvKHa5fo0EqPEwAAEpp6W38lMi8
+2026-07-17 13:56:12 | INFO     | bot                  | [ACTION] NOTIFY | Отправлено владельцу: 🗑 <b>Удалённое сообщение</b>
+
+👤 Егор (@Arbyzik_topp)
+🆔 <code>8934899126</code>
+💬
+2026-07-17 13:56:14 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1437 сек
+2026-07-17 13:56:14 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Все же норм
+2026-07-17 13:56:18 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Некрасиво смотрится
+2026-07-17 13:56:23 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1431 сек
+2026-07-17 13:56:23 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ты через ии мне пишешь соо
+2026-07-17 13:57:46 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1347 сек
+2026-07-17 13:57:46 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Все короче все работает да?
+2026-07-17 13:58:07 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1327 сек
+2026-07-17 13:58:07 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Короче я уже настроил бод хостинг
+2026-07-17 13:58:19 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1313 сек
+2026-07-17 13:58:19 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): И скину файл когда даш доплату
+2026-07-17 13:58:57 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 1277 сек
+2026-07-17 13:58:57 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): @la_rahati_fe_dunya вот сюда если что
+2026-07-17 13:59:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Привет
+2026-07-17 14:00:05 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Всё можешь короче кидать коть я там сами справлю у
+2026-07-17 14:01:04 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Мы с тобой договорились ты скидываешь код я его те
+2026-07-17 14:01:42 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): .
+2026-07-17 14:01:53 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Но мы с тобой договорились
+2026-07-17 14:01:59 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Договор дороже денег
+2026-07-17 14:02:14 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Напиши на другой аккаунт
+2026-07-17 14:02:26 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): А где код
+2026-07-17 14:02:54 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Нет
+2026-07-17 14:03:03 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): [медиа]
+2026-07-17 14:03:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Мы с тобой договорились ты мне даёшь код я тестиру
+2026-07-17 14:03:25 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): На другом аккаунте посмотри я тебе скину сообщение
+2026-07-17 14:04:07 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 967 сек
+2026-07-17 14:04:07 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну вот мы же поотестили
+2026-07-17 14:04:16 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): А кол
+2026-07-17 14:04:23 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 952 сек
+2026-07-17 14:04:23 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да давай уже мы же все таки дружные
+2026-07-17 14:04:29 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Я сам исправлю как я хочу
+2026-07-17 14:04:31 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 941 сек
+2026-07-17 14:04:31 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да код я клянусь скину
+2026-07-17 14:04:35 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 940 сек
+2026-07-17 14:04:35 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну да ок
+2026-07-17 14:04:36 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну кидай
+2026-07-17 14:04:42 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 929 сек
+2026-07-17 14:04:42 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну а оплата
+2026-07-17 14:04:47 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 923 сек
+2026-07-17 14:04:47 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да давай я же не скамер
+2026-07-17 14:04:51 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 922 сек
+2026-07-17 14:04:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Почему не вериш
+2026-07-17 14:05:03 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 910 сек
+2026-07-17 14:05:03 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да и тем более ты уже скинул чать оплаты
+2026-07-17 14:05:23 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну
+2026-07-17 14:05:29 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Мы с тобой договорились ты понимаешь договор дорож
+2026-07-17 14:05:35 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ты сейчас скинешь я сейчас исправлю и докину тебе 
+2026-07-17 14:05:56 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 854 сек
+2026-07-17 14:05:56 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну блин я не хочу долго ждать
+2026-07-17 14:05:58 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 852 сек
+2026-07-17 14:05:58 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну пж
+2026-07-17 14:06:20 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Звёзды прибыть в течение 3 минут
+2026-07-17 14:06:22 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 834 сек
+2026-07-17 14:06:22 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Я же не обманул и выделил для тебя время и сделал 
+2026-07-17 14:06:23 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Там всё на автоматический
+2026-07-17 14:06:32 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 821 сек
+2026-07-17 14:06:32 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Придут ща?
+2026-07-17 14:06:34 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Я тебе вчера спросил звёзды пришли они пришли чере
+2026-07-17 14:06:40 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ты сейчас закинешь код я сейчас оплачу и сразу не 
+2026-07-17 14:06:46 | INFO     | bot                  | [ACTION] NOTIFY | Отправлено владельцу: ✏ <b>Изменённое сообщение</b>
+
+👤 Егор  (@Arbyzik_topp)
+🆔 <code>8934899126</code>
+2026-07-17 14:06:46 | INFO     | bot                  | [ACTION] EDIT | От 8934899126
+2026-07-17 14:06:54 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 801 сек
+2026-07-17 14:06:54 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну блин давай пж первый пойдёшь
+2026-07-17 14:07:04 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 787 сек
+2026-07-17 14:07:04 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): А я пока перекину файл на свой телефон
+2026-07-17 14:07:29 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ненене
+2026-07-17 14:07:34 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Первым не пойду теперь
+2026-07-17 14:07:38 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 752 сек
+2026-07-17 14:07:38 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну чо блин аж
+2026-07-17 14:07:43 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 751 сек
+2026-07-17 14:07:43 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Почему
+2026-07-17 14:07:45 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 748 сек
+2026-07-17 14:07:45 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Да давай
+2026-07-17 14:07:46 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Договорились  50 на 50
+2026-07-17 14:07:51 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну договор дороже денег ты понимаешь это или нет
+2026-07-17 14:07:52 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 740 сек
+2026-07-17 14:07:52 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну после теста же
+2026-07-17 14:07:57 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Если мы с тобой договор заключили значит мы должны
+2026-07-17 14:08:00 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 734 сек
+2026-07-17 14:08:00 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Ну да  я понял это
+2026-07-17 14:08:00 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): Ну ты мне код скинул
+2026-07-17 14:08:11 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 721 сек
+2026-07-17 14:08:11 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Блин ну пж
+2026-07-17 14:08:19 | INFO     | bot                  | [ACTION] AR_SKIP | Cooldown для 6888854128, осталось 716 сек
+2026-07-17 14:08:19 | INFO     | bot                  | [ACTION] BIZ_MSG | От 6888854128 (@minenotru): Чо от тебя уйдет!?
+2026-07-17 14:08:27 | INFO     | bot                  | [ACTION] BIZ_MSG | От 8934899126 (@Arbyzik_topp): А от тебя
